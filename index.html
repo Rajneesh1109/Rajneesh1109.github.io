@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajneesh Chaubey | Software Engineer & Full-Stack Developer</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(51, 65, 85, 0.85);
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.25);
+            --secondary: #818cf8;
+            --accent: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.5);
+            --font-main: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(129, 140, 248, 0.08) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand span {
+            color: var(--primary);
+        }
+
+        .nav-brand .mono-tag {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent);
+            background: rgba(245, 158, 11, 0.12);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: #0b1120;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 8% 60px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 860px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            animation: pulse 2.5s infinite;
+        }
+
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span.gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dynamic-role {
+            font-family: var(--font-mono);
+            font-size: clamp(18px, 2.8vw, 24px);
+            color: var(--text-main);
+            margin-bottom: 22px;
+            min-height: 36px;
+        }
+
+        .dynamic-role span {
+            color: var(--primary);
+            border-right: 2px solid var(--primary);
+            animation: blink 0.75s step-end infinite;
+            padding-right: 4px;
+        }
+
+        .hero-summary {
+            color: var(--text-muted);
+            font-size: clamp(16px, 1.8vw, 18px);
+            max-width: 720px;
+            margin: 0 auto 35px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 45px;
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: #040914;
+            padding: 13px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px var(--primary-glow);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px var(--primary-glow);
+            background: #7dd3fc;
+        }
+
+        .btn-outline {
+            background: rgba(30, 41, 59, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 13px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Metric Highlights Ribbon */
+        .metrics-ribbon {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        .metric-val {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Section Global */
+        .section {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* Technical Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+            transition: 0.3s;
+        }
+
+        .skill-group:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .skill-group-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .skill-icon-box {
+            width: 44px;
+            height: 44px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .skill-group-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .skill-pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-pill {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: #e2e8f0;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: 0.2s;
+        }
+
+        .skill-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .project-year {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(245, 158, 11, 0.12);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .project-desc-bullets {
+            list-style: none;
+            margin-bottom: 22px;
+        }
+
+        .project-desc-bullets li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .project-desc-bullets li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .project-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .tech-badge {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .project-btn-group {
+            display: flex;
+            gap: 14px;
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+        }
+
+        .project-btn {
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: 0.2s;
+        }
+
+        .project-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Education & Certifications Timeline */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .timeline-col-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 18px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--border-hover);
+            transform: translateX(4px);
+        }
+
+        .timeline-year {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .timeline-heading {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .timeline-sub {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Live GitHub & LeetCode Stats */
+        .stats-section-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .stats-cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .stats-cards-wrapper img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Contact & Footer */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px 30px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-box h2 {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .contact-pill {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .contact-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 35px 8%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @media(max-width: 768px) {
+            .nav-links, .nav-btn {
+                display: none;
+            }
+            .hero {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="nav-brand">
+            Rajneesh <span>Chaubey</span>
+            <span class="mono-tag">IT'27</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Education</a></li>
+            <li><a href="#stats">Coding Stats</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="mailto:rajneeshchaubey360@gmail.com" class="nav-btn"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulsing-dot"></span>
+                <span>Open for SDE & Web Dev Roles</span>
+            </div>
+
+            <h1>Hey, I'm <span class="gradient-text">Rajneesh Chaubey</span></h1>
+            
+            <div class="dynamic-role">
+                <span id="typewriter"></span>
+            </div>
+
+            <p class="hero-summary">
+                Collaborative Software Engineer with a solid foundation in <b>Data Structures & Algorithms (Java)</b> and <b>Full-Stack Web Development</b>. Dedicated to engineering scalable, secure, and user-centric digital products.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn-main"><i class="fas fa-laptop-code"></i> Explore Projects</a>
+                <a href="https://github.com/Rajneesh1109" target="_blank" class="btn-outline"><i class="fab fa-github"></i> GitHub Profile</a>
+                <a href="https://linkedin.com/in/rajneeshchaubey11" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+
+            <!-- Fast Metrics -->
+            <div class="metrics-ribbon">
+                <div class="metric-card">
+                    <div class="metric-val">100+</div>
+                    <div class="metric-label">LeetCode Problems Solved</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val">B.Tech IT</div>
+                    <div class="metric-label">ABES Engineering College</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val">Full-Stack</div>
+                    <div class="metric-label">MERN + PHP/MySQL Stack</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val">Noida, UP</div>
+                    <div class="metric-label">Base Location</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-header">
+            <div class="section-tag">Core Capabilities</div>
+            <h2 class="section-title">Technical Expertise</h2>
+        </div>
+
+        <div class="skills-container">
+            <!-- Group 1: Core Logic -->
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <div class="skill-icon-box"><i class="fas fa-brain"></i></div>
+                    <h3 class="skill-group-title">Core Logic & DSA</h3>
+                </div>
+                <div class="skill-pill-list">
+                    <span class="skill-pill"><i class="fab fa-java"></i> Java</span>
+                    <span class="skill-pill"><i class="fas fa-network-wired"></i> Data Structures & Algorithms</span>
+                    <span class="skill-pill"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+                    <span class="skill-pill"><i class="fas fa-code"></i> Code Optimization</span>
+                </div>
+            </div>
+
+            <!-- Group 2: Web Tech -->
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <div class="skill-icon-box"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="skill-group-title">Web Development</h3>
+                </div>
+                <div class="skill-pill-list">
+                    <span class="skill-pill"><i class="fab fa-react"></i> React.js</span>
+                    <span class="skill-pill"><i class="fab fa-node-js"></i> Node.js</span>
+                    <span class="skill-pill"><i class="fas fa-server"></i> Express.js</span>
+                    <span class="skill-pill"><i class="fab fa-php"></i> PHP</span>
+                    <span class="skill-pill"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
+                    <span class="skill-pill"><i class="fab fa-html5"></i> HTML5 & CSS3</span>
+                </div>
+            </div>
+
+            <!-- Group 3: Database & Systems -->
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <div class="skill-icon-box"><i class="fas fa-database"></i></div>
+                    <h3 class="skill-group-title">Database & Systems</h3>
+                </div>
+                <div class="skill-pill-list">
+                    <span class="skill-pill"><i class="fas fa-database"></i> SQL (MySQL)</span>
+                    <span class="skill-pill"><i class="fas fa-table"></i> Database Management</span>
+                    <span class="skill-pill"><i class="fas fa-shield-alt"></i> Auth Security & Session</span>
+                    <span class="skill-pill"><i class="fas fa-network-wired"></i> Computer Networks</span>
+                </div>
+            </div>
+
+            <!-- Group 4: Tools & Data -->
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    <div class="skill-icon-box"><i class="fas fa-toolbox"></i></div>
+                    <h3 class="skill-group-title">Tools & Analytics</h3>
+                </div>
+                <div class="skill-pill-list">
+                    <span class="skill-pill"><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                    <span class="skill-pill"><i class="fas fa-paper-plane"></i> Postman</span>
+                    <span class="skill-pill"><i class="fab fa-python"></i> Python (Data Science)</span>
+                    <span class="skill-pill"><i class="fas fa-diagram-project"></i> Cisco Packet Tracer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-header">
+            <div class="section-tag">Proof of Work</div>
+            <h2 class="section-title">Key Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1: BookBrief -->
+            <div class="project-card">
+                <div>
+                    <div class="project-top-row">
+                        <span class="tech-badge">Web Application</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-title">BookBrief — Book Summary</h3>
+                    <ul class="project-desc-bullets">
+                        <li>Designed and developed a fully responsive web application delivering curated book summaries, key takeaways, and user ratings.</li>
+                        <li>Utilized modern JavaScript (ES6) and CSS3 to build an interactive, user-friendly interface with optimal cross-device performance.</li>
+                        <li>Deployed the application seamlessly using Netlify and managed continuous version control via Git and GitHub.</li>
+                    </ul>
+                    <div class="project-tech-tags">
+                        <span class="tech-badge">JavaScript (ES6)</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">Netlify</span>
+                        <span class="tech-badge">Git</span>
+                    </div>
+                </div>
+                <div class="project-btn-group">
+                    <a href="https://github.com/Rajneesh1109/BookBrief" target="_blank" class="project-btn"><i class="fab fa-github"></i> GitHub Repository</a>
+                </div>
+            </div>
+
+            <!-- Project 2: AuthX -->
+            <div class="project-card">
+                <div>
+                    <div class="project-top-row">
+                        <span class="tech-badge">Security & Backend</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">AuthX — Authentication System</h3>
+                    <ul class="project-desc-bullets">
+                        <li>Architected a secure authentication module featuring full CRUD capabilities for seamless user data management.</li>
+                        <li>Implemented robust session handling and input validation protocols to prevent common web vulnerabilities.</li>
+                        <li>Formulated a streamlined registration and login/logout flow incorporating encrypted password storage for enhanced security.</li>
+                    </ul>
+                    <div class="project-tech-tags">
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Password Encryption</span>
+                    </div>
+                </div>
+                <div class="project-btn-group">
+                    <a href="https://github.com/Rajneesh1109/AuthX" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+                </div>
+            </div>
+
+            <!-- Project 3: LeetCode Solutions Automation -->
+            <div class="project-card">
+                <div>
+                    <div class="project-top-row">
+                        <span class="tech-badge">Algorithms & Automation</span>
+                        <span class="project-year">Live Continuous</span>
+                    </div>
+                    <h3 class="project-title">LeetCode Solutions Engine</h3>
+                    <ul class="project-desc-bullets">
+                        <li>Daily automated algorithmic problem solving portfolio synchronized with GitHub using LeetSync.</li>
+                        <li>Covers dynamic programming, graphs, trees, arrays, and two-pointer patterns with optimal time & space complexity.</li>
+                        <li>Demonstrates consistent 100+ problem solutions solved and documented for interview readiness.</li>
+                    </ul>
+                    <div class="project-tech-tags">
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">DSA</span>
+                        <span class="tech-badge">LeetCode</span>
+                        <span class="tech-badge">CI/CD Sync</span>
+                    </div>
+                </div>
+                <div class="project-btn-group">
+                    <a href="https://github.com/Rajneesh1109/LeetCode-Solutions" target="_blank" class="project-btn"><i class="fab fa-github"></i> Repository</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Timeline -->
+    <section class="section" id="journey">
+        <div class="section-header">
+            <div class="section-tag">Academic & Credentials</div>
+            <h2 class="section-title">Education & Certifications</h2>
+        </div>
+
+        <div class="timeline-grid">
+            <!-- Education Column -->
+            <div>
+                <h3 class="timeline-col-title"><i class="fas fa-graduation-cap" style="color: var(--primary);"></i> Education</h3>
+                
+                <div class="timeline-card">
+                    <div class="timeline-year">2023 — 2027</div>
+                    <h4 class="timeline-heading">ABES Engineering College</h4>
+                    <p class="timeline-sub">Bachelor of Technology (B.Tech) — Information Technology</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-year">2021</div>
+                    <h4 class="timeline-heading">New Cambridge Senior Secondary School</h4>
+                    <p class="timeline-sub">Intermediate (Class XII) — Science Stream</p>
+                </div>
+            </div>
+
+            <!-- Certifications Column -->
+            <div>
+                <h3 class="timeline-col-title"><i class="fas fa-award" style="color: var(--accent);"></i> Certifications & Honors</h3>
+                
+                <div class="timeline-card">
+                    <div class="timeline-year">2025</div>
+                    <h4 class="timeline-heading">Python 101 for Data Science</h4>
+                    <p class="timeline-sub">IBM / Cognitive Class</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-year">2024</div>
+                    <h4 class="timeline-heading">Data Visualization with Python</h4>
+                    <p class="timeline-sub">IBM</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-year">2024</div>
+                    <h4 class="timeline-heading">Networking Basics</h4>
+                    <p class="timeline-sub">Cisco Networking Academy</p>
+                </div>
+
+                <div class="timeline-card" style="border-color: rgba(34, 197, 94, 0.4); background: rgba(34, 197, 94, 0.05);">
+                    <div class="timeline-year" style="color: #22c55e;">Milestone</div>
+                    <h4 class="timeline-heading">Solved 100+ LeetCode Questions</h4>
+                    <p class="timeline-sub">Proficient in Core Java & Algorithmic Problem Solving</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live GitHub & Stats Section -->
+    <section class="section" id="stats">
+        <div class="section-header">
+            <div class="section-tag">Activity Dashboard</div>
+            <h2 class="section-title">Live GitHub & Coding Activity</h2>
+        </div>
+
+        <div class="stats-section-box">
+            <p style="color: var(--text-muted); font-size: 15px;">Real-time synchronized data fetched directly from GitHub API.</p>
+            <div class="stats-cards-wrapper">
+                <img src="https://github-readme-stats.vercel.app/api?username=Rajneesh1109&show_icons=true&theme=tokyonight&hide_border=true&title_color=38bdf8&icon_color=f59e0b" alt="Rajneesh GitHub Stats" loading="lazy">
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=Rajneesh1109&theme=tokyonight&hide_border=true&stroke=38bdf8&ring=38bdf8&fire=f59e0b" alt="Rajneesh GitHub Streak" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="contact-box">
+            <h2>Let's Build Something Meaningful!</h2>
+            <p>I am actively seeking software engineering internships, open-source collaborations, and developer roles. Feel free to connect!</p>
+            
+            <div class="contact-links-grid">
+                <a href="mailto:rajneeshchaubey360@gmail.com" class="contact-pill"><i class="fas fa-envelope"></i> rajneeshchaubey360@gmail.com</a>
+                <a href="tel:+919580617967" class="contact-pill"><i class="fas fa-phone"></i> +91-9580617967</a>
+                <a href="https://linkedin.com/in/rajneeshchaubey11" target="_blank" class="contact-pill"><i class="fab fa-linkedin"></i> linkedin.com/in/rajneeshchaubey11</a>
+                <a href="https://github.com/Rajneesh1109" target="_blank" class="contact-pill"><i class="fab fa-github"></i> github.com/Rajneesh1109</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Crafted with precision by <b>Rajneesh Chaubey</b> • Hosted on GitHub Pages</p>
+        <p style="margin-top: 8px; font-size: 12px; color: #64748b;">© 2026 Rajneesh Chaubey. All rights reserved.</p>
+    </footer>
+
+    <!-- Interactive Typewriter Script -->
+    <script>
+        const roles = [
+            "Software Engineer",
+            "B.Tech IT @ ABES Engineering College",
+            "Full-Stack Developer (React & Node)",
+            "100+ LeetCode Problem Solver",
+            "Java & Backend Enthusiast"
+        ];
+        
+        let roleIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
+
+        function type() {
+            const current = roles[roleIdx];
+            
+            if (isDeleting) {
+                typewriterEl.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typewriterEl.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === current.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                roleIdx = (roleIdx + 1) % roles.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
